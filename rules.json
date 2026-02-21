@@ -1,0 +1,40 @@
+{
+    "circuit_rules": [
+        {
+            "setup": ["LED", "Battery"],
+            "required": ["Resistor"],
+            "warning": "CRITICAL: High current! Add a 220-ohm resistor to prevent LED burnout.",
+            "severity": "High"
+        },
+        {
+            "setup": ["ESP32", "DHT11"],
+            "required": ["Pull-up Resistor"],
+            "warning": "LOGIC ERROR: DHT11 requires a 4.7k-10k pull-up resistor on the data line for stable readings.",
+            "severity": "Medium"
+        },
+        {
+            "setup": ["Voltage Regulator", "Battery"],
+            "required": ["Capacitor"],
+            "warning": "STABILITY: Add decoupling capacitors (0.1uF/10uF) to the regulator input/output to prevent oscillation.",
+            "severity": "Medium"
+        },
+        {
+            "setup": ["Push Button", "Microcontroller"],
+            "required": ["Pull-down Resistor"],
+            "warning": "FLOATING PIN: Use a pull-down resistor (10k) to prevent random triggering of the button input.",
+            "severity": "Low"
+        },
+        {
+            "setup": ["L298N Motor Driver", "Motor"],
+            "required": ["External Battery"],
+            "warning": "POWER: Motors draw high current. Do not power the L298N directly from the ESP32/Arduino 5V pin.",
+            "severity": "High"
+        },
+        {
+            "setup": ["I2C Sensor", "ESP32"],
+            "required": ["SDA Line", "SCL Line"],
+            "warning": "WIRING: Ensure both SDA and SCL lines are connected. Check for missing 4.7k pull-up resistors if using long wires.",
+            "severity": "Medium"
+        }
+    ]
+}
